@@ -7,6 +7,15 @@ something along the line of [YalePlus](http://yaleplus.com/)'s Bluebook+.
 
 ## Usage
 
+Add the gem to your Gemfile, then run `bundle install`:
+
+```
+gem 'lse_courses', git: 'git@github.com:timrogers/lse_courses.git'
+```
+
+You might need to add a call to `require 'lse_courses'` in your code, 
+dependent on your setup.
+
 You can retrieve an array with every course offered at LSE:
 
 ```ruby
