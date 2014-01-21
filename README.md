@@ -9,7 +9,12 @@ something along the line of [YalePlus](http://yaleplus.com/)'s Bluebook+.
 
 Add the gem to your Gemfile, then run `bundle install`:
 
-```
+```ruby
+# Install from RubyGems
+source "http://rubygems.org"
+gem 'lse_courses', '0.0.2'
+
+# Install the latest version via Git
 gem 'lse_courses', git: 'git@github.com:timrogers/lse_courses.git'
 ```
 
