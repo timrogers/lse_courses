@@ -22,6 +22,9 @@ You can retrieve an array with every course offered at LSE:
 courses = LSECourses::Course.all
 courses.each do |course|
   puts "#{course.code} - #{course.name}"
+
+  # LSE records include surveys on courses - stored in #survey on the object
+  puts "#{course.survey.recommended_by}% of students recommend this cause"
 end
 ```
 
