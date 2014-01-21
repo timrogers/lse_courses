@@ -29,6 +29,7 @@ module LSECourses
     end
 
     alias_method :available_on_general_course?, :general_course?
+    alias_method :title, :name
 
     # Class methods
     def self.course_lists
