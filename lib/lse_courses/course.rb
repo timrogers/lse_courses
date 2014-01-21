@@ -63,7 +63,7 @@ module LSECourses
         document = fetch_and_parse(url)
         document.css('table tr td p a').each do |link|
           title = link.text
-          course_code = title[0..4]
+          course_code = title.split(" ").first
 
           if code == course_code
             course = fetch_and_parse(
