@@ -12,7 +12,7 @@ Add the gem to your Gemfile, then run `bundle install`:
 ```ruby
 # Install from RubyGems
 source "http://rubygems.org"
-gem 'lse_courses', '0.0.2'
+gem 'lse_courses', '0.0.3'
 
 # Install the latest version via Git
 gem 'lse_courses', git: 'git@github.com:timrogers/lse_courses.git'
@@ -24,9 +24,18 @@ dependent on your setup.
 You can retrieve an array with every course offered at LSE:
 
 ```ruby
+# You can just fetch the most basic information - name, code and type (e.g. undergraduate)
 courses = LSECourses::Course.all
+
+# ...or you can grab everything at once - this will take a long time
+courses = LSECourses::Course.all(preload: true)
+
 courses.each do |course|
   puts "#{course.code} - #{course.name}"
+
+  # Fetch a more detailed attribute, and we'll grab all of them for you
+  # and store them if you didn't preload the data originally
+  puts course.department
 
   # LSE records include surveys on courses - stored in #survey on the object
   puts "#{course.survey.recommended_by}% of students recommend this cause"
@@ -36,8 +45,11 @@ end
 ...or you can fetch a specific course by code:
 
 ```ruby
-course = LSECourses::Course.find_by_code("LSE100")
+course = LSECourses::Course.find("LSE100")
 puts course.name
+
+# All the data is loaded straight up, since there's only one course to fetch
+puts course.department
 ```
 
 Upcoming features that should be added are some kind of search (e.g. for
